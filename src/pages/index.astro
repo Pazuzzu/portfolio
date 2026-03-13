@@ -9,111 +9,96 @@ const pageDescription = profile.pitch;
 <BaseLayout title={pageTitle} description={pageDescription}>
   <a class="skip-link" href="#main-content">Skip to content</a>
 
-  <header class="hero" aria-labelledby="hero-title">
-    <div class="hero__content container">
-      <p class="eyebrow">{profile.location}</p>
-      <h1 id="hero-title">{profile.name}</h1>
-      <p class="hero__role">{profile.title}</p>
-      <p class="hero__pitch">{profile.pitch}</p>
-      <p class="hero__intro">{profile.intro}</p>
+  <header class="hero container" aria-labelledby="hero-title">
+    <p class="eyebrow">{profile.location}</p>
+    <h1 id="hero-title">{profile.name}</h1>
+    <p class="hero__role">{profile.title}</p>
+    <p class="hero__pitch">{profile.pitch}</p>
+    <p class="hero__intro">{profile.intro}</p>
 
-      <nav class="hero__cta" aria-label="Primary links">
-        <a class="button button--solid" href={profile.cvPath} download>Download CV</a>
-        <a class="button" href={profile.links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
-        <a class="button" href={profile.links.github} target="_blank" rel="noreferrer">GitHub</a>
-        <a class="button" href={`mailto:${profile.email}`}>Email</a>
-      </nav>
-    </div>
+    <nav class="link-row" aria-label="Primary links">
+      <a href={profile.cvPath} download>CV (PDF)</a>
+      <a href={profile.links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+      <a href={profile.links.github} target="_blank" rel="noreferrer">GitHub</a>
+      <a href={profile.links.scholar} target="_blank" rel="noreferrer">Google Scholar</a>
+      <a href={`mailto:${profile.email}`}>Email</a>
+    </nav>
   </header>
 
-  <main id="main-content" class="container">
-    <section class="metrics" aria-labelledby="metrics-title">
+  <main id="main-content" class="container content">
+    <section class="section" aria-labelledby="metrics-title">
       <h2 id="metrics-title">Selected Impact</h2>
-      <div class="metrics__grid">
+      <ul class="metrics-list">
         {profile.metrics.map((metric) => (
-          <article class="metric-card">
-            <p class="metric-card__value">{metric.value}</p>
-            <h3>{metric.label}</h3>
-            <p>{metric.context}</p>
-          </article>
+          <li>
+            <strong>{metric.value}</strong> {metric.label}: {metric.context}
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
 
     <section class="section" aria-labelledby="experience-title">
-      <h2 id="experience-title">Experience Highlights</h2>
-      <div class="card-list">
-        {profile.experienceHighlights.map((experience) => (
-          <article class="content-card">
-            <header class="content-card__header">
-              <h3>{experience.role}</h3>
-              <p>{experience.company}</p>
-              <p class="meta">{experience.period} · {experience.location}</p>
-            </header>
-            <p>{experience.summary}</p>
-            <ul>
-              {experience.bullets.map((item) => (
-                <li>{item}</li>
-              ))}
-            </ul>
-            <p class="stack"><strong>Stack:</strong> {experience.stack.join(", ")}</p>
-          </article>
-        ))}
-      </div>
+      <h2 id="experience-title">Experience</h2>
+      {profile.experienceHighlights.map((experience) => (
+        <article class="entry">
+          <header class="entry__header">
+            <h3>{experience.role}</h3>
+            <p class="meta">{experience.company} · {experience.period} · {experience.location}</p>
+          </header>
+          <p>{experience.summary}</p>
+          <ul>
+            {experience.bullets.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+          <p class="stack">Stack: {experience.stack.join(", ")}</p>
+        </article>
+      ))}
     </section>
 
     <section class="section" aria-labelledby="projects-title">
-      <h2 id="projects-title">Selected Projects</h2>
-      <div class="card-list">
-        {profile.projects.map((project) => (
-          <article class="content-card">
-            <header class="content-card__header">
-              <h3>{project.name}</h3>
-              <p>{project.role}</p>
-              <p class="meta">{project.period}</p>
-            </header>
-            <p>{project.summary}</p>
-            <ul>
-              {project.bullets.map((item) => (
-                <li>{item}</li>
-              ))}
-            </ul>
-            <p class="stack"><strong>Stack:</strong> {project.stack.join(", ")}</p>
-          </article>
-        ))}
-      </div>
+      <h2 id="projects-title">Projects</h2>
+      {profile.projects.map((project) => (
+        <article class="entry">
+          <header class="entry__header">
+            <h3>{project.name}</h3>
+            <p class="meta">{project.role} · {project.period}</p>
+          </header>
+          <p>{project.summary}</p>
+          <ul>
+            {project.bullets.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+          <p class="stack">Stack: {project.stack.join(", ")}</p>
+        </article>
+      ))}
     </section>
 
     <section class="section" aria-labelledby="publications-title">
       <h2 id="publications-title">Publications</h2>
-      <div class="card-list">
+      <ol class="publication-list">
         {profile.publications.map((publication) => (
-          <article class="content-card">
-            <h3>{publication.title}</h3>
+          <li>
+            <p class="publication-title">{publication.title}</p>
             <p class="meta">
-              {publication.venue} · {publication.year} · {publication.citations} citations
+              {publication.authors} · {publication.venue} ({publication.year}) · {publication.citations} citations
             </p>
-            <p>{publication.authors}</p>
-          </article>
+          </li>
         ))}
-      </div>
+      </ol>
       <p>
-        Full publication list: <a href={profile.links.scholar} target="_blank" rel="noreferrer">Google Scholar</a>
+        Full list: <a href={profile.links.scholar} target="_blank" rel="noreferrer">Google Scholar profile</a>
       </p>
     </section>
 
     <section class="section" aria-labelledby="skills-title">
       <h2 id="skills-title">Skills</h2>
-      <div class="skills-grid">
+      <div class="skills-list">
         {profile.skills.map((group) => (
-          <article class="skill-group">
-            <h3>{group.category}</h3>
-            <ul>
-              {group.items.map((skill) => (
-                <li>{skill}</li>
-              ))}
-            </ul>
-          </article>
+          <p>
+            <strong>{group.category}:</strong> {group.items.join(", ")}
+          </p>
         ))}
       </div>
     </section>
@@ -121,11 +106,8 @@ const pageDescription = profile.pitch;
 
   <footer class="footer container">
     <p>{profile.name}</p>
-    <nav aria-label="Secondary links">
-      <a href={`mailto:${profile.email}`}>{profile.email}</a>
-      <a href={profile.links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
-      <a href={profile.links.github} target="_blank" rel="noreferrer">GitHub</a>
-      <a href={profile.links.medium} target="_blank" rel="noreferrer">Medium</a>
-    </nav>
+    <p>
+      <a href={`mailto:${profile.email}`}>{profile.email}</a> · <a href={profile.links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a> · <a href={profile.links.github} target="_blank" rel="noreferrer">GitHub</a> · <a href={profile.links.medium} target="_blank" rel="noreferrer">Medium</a>
+    </p>
   </footer>
 </BaseLayout>
