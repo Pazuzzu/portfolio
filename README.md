@@ -28,7 +28,7 @@ This file drives all homepage sections.
 
 The downloadable CV is served from:
 
-- `public/cv/El-Mehdi-CHOUHAM-8-enfe.pdf`
+- `public/cv/El-Mehdi-CHOUHAM-9-enpfe.pdf`
 
 ## GitHub Pages deployment
 

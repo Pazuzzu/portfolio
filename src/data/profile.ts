@@ -62,9 +62,9 @@ export const profile: PortfolioProfile = {
   title: "Machine Learning Engineer - NLP",
   location: "Paris, France",
   pitch:
-    "I design and ship production NLP and LLM systems that improve product quality, reduce latency, and cut inference cost at scale.",
+    "I design and ship production NLP, LLM, and agentic systems that improve quality, automate complex workflows, and reduce latency and inference cost.",
   intro:
-    "Engineer with 4+ years across applied research and production delivery, with a focus on RAG, model optimization, and end-to-end ML product integration.",
+    "Engineer with 4+ years across applied research and production delivery, focused on agentic workflows, evaluation, RAG, and end-to-end ML product integration. Currently building AI-assisted clinical trial case reviews at Sanofi.",
   email: "mehdichouham@gmail.com",
   links: {
     linkedin: "https://www.linkedin.com/in/el-mehdi-chouham/",
@@ -72,8 +72,18 @@ export const profile: PortfolioProfile = {
     scholar: "https://scholar.google.com/citations?user=HCWCclIAAAAJ&hl",
     medium: "https://medium.com/@pazuzzu"
   },
-  cvPath: "cv/El-Mehdi-CHOUHAM-8-enfe.pdf",
+  cvPath: "cv/El-Mehdi-CHOUHAM-9-enpfe.pdf",
   metrics: [
+    {
+      value: "~4x",
+      label: "Case Review Throughput",
+      context: "Clinical trial case reviews per user at Sanofi"
+    },
+    {
+      value: "90%",
+      label: "Clinical Review F2",
+      context: "Validated against data labeled by clinical users cleared on the studies of interest"
+    },
     {
       value: "+13%",
       label: "Intent & Entity F1",
@@ -82,7 +92,7 @@ export const profile: PortfolioProfile = {
     {
       value: "-74%",
       label: "Inference Cost",
-      context: "Model and infrastructure optimization in production"
+      context: "Model and infrastructure optimization by a separate team at SNCF"
     },
     {
       value: "96%",
@@ -97,16 +107,32 @@ export const profile: PortfolioProfile = {
   ],
   experienceHighlights: [
     {
-      role: "Lead Machine Learning Engineer - NLP (Freelance)",
-      company: "SNCF Connect & Tech",
-      period: "Apr 2024 - Present",
+      role: "Machine Learning Engineer - Agentic (Freelance)",
+      company: "Sanofi",
+      period: "Jan 2026 - Present",
       location: "Paris, France",
       summary:
-        "Led NLP evolution and generative AI integration for France's largest customer-facing railway chatbots.",
+        "Built an agentic system to automate clinical trial patient case reviews, reconciling safety narratives with hospital forms and pharmacovigilance records to flag discrepancies.",
       bullets: [
-        "Migrated intent/entity models to transformers for measurable quality gains.",
-        "Designed and deployed a RAG search agent with rephrasing and memory capabilities.",
-        "Led synthetic data generation, annotation, and pre-production traffic simulation."
+        "Designed a Pydantic AI + Bedrock flow to extract safety narratives and cross-check related records.",
+        "Validated core use cases against clinically labeled data with an eval-first approach (90% F2).",
+        "Built a reviewer feedback loop with GEPA (DSPy) prompt optimization and W&B Weave evaluation tracking.",
+        "Increased case review throughput per user by approximately 4x."
+      ],
+      stack: ["Python", "Pydantic AI", "AWS AgentCore", "Bedrock", "DSPy", "W&B Weave"]
+    },
+    {
+      role: "Lead Machine Learning Engineer - NLP (Freelance)",
+      company: "SNCF Connect & Tech",
+      period: "Apr 2024 - Dec 2025",
+      location: "Paris, France",
+      summary:
+        "Led NLP evolution and generative AI integration for France's two largest customer-facing railway chatbots.",
+      bullets: [
+        "Migrated MaxEnt intent/entity models to transformers (+13% F1).",
+        "Designed and deployed a RAG search agent with rephrasing and memory using Claude/Cohere on Bedrock + MongoDB (96% recall @k=2).",
+        "Led synthetic data generation, annotation, and pre-production traffic simulation.",
+        "Reduced bot response latency by 95% through tight Kotlin integration, replacing the microservice architecture."
       ],
       stack: ["Python", "PyTorch", "AWS Bedrock", "MongoDB", "LangChain", "Terraform", "Kotlin"]
     },
@@ -219,11 +245,15 @@ export const profile: PortfolioProfile = {
     },
     {
       category: "Deep Learning",
-      items: ["PyTorch", "TensorFlow", "JAX", "Transformers", "ONNX", "Hugging Face"]
+      items: ["PyTorch", "TensorFlow", "Triton", "JAX", "Transformers", "ONNX", "Hugging Face"]
     },
     {
-      category: "LLM & MLOps",
-      items: ["LangChain", "vLLM", "TGI", "FastAPI", "Docker", "Terraform", "AWS", "GCP"]
+      category: "LLM & Agents",
+      items: ["Pydantic AI", "AWS AgentCore", "AWS Bedrock", "DSPy", "LangChain", "Unsloth", "vLLM", "TGI", "SageMaker", "Vertex AI"]
+    },
+    {
+      category: "MLOps & Evaluation",
+      items: ["FastAPI", "Docker", "Git", "Terraform", "AWS", "GCP", "Langfuse", "W&B", "Weave"]
     },
     {
       category: "Data & Vector",
